@@ -4,12 +4,13 @@ head
   meta(charset="UTF-8")
   title Movies
   style.
-    .active {
+    .active,.active * {
       font-weight: bold;
       color: green;
     }
 body
   ul
     each movie in movies
-      li(class={active: movie._id == activeId}) #{movie.title}, #{movie.year}
+      li(class={active: movie._id == activeId}) 
+        a(href="/movie/#{movie.title}")= movie.title
   a(href="/add") add movie
