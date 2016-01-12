@@ -12,3 +12,4 @@ body
   ul
     each movie in movies
       li(class={active: movie._id == activeId}) #{movie.title}, #{movie.year}
+  a(href="/add") add movie
