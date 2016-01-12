@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Add movie
+  style.
+    label {
+      display: inline-block;
+      width: 10%;
+    }
+    .row {
+      margin-bottom: 5px;
+    }
+    .error {
+      color: red;
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+body
+  if error
+    p.error Form is not correct
+  form(action="/add", method="POST")
+    div.row
+      label(for="title") title
+      input#title(type="text", name="title")
+    div.row
+      label(for="year") year
+      input#year(type="text", name="year")
+    div.row
+      label(for="imdb") imdb
+      input#imdb(type="text", name="imdb")
+    input(type="submit")
