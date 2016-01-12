@@ -6,7 +6,7 @@ var express = require('express'),
 
 app.set('view engine', 'jade');
 app.set('views', __dirname+'/views');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 MongoClient.connect('mongodb://localhost:27017/video', function(err,db){
@@ -40,9 +40,9 @@ MongoClient.connect('mongodb://localhost:27017/video', function(err,db){
     if (title == '' || year == '' || imdb == '') {
       res.render('add', {error: true})
     } else {
-      db.collection('movies').insert({title: title, year: year, imdb: imdb}, function(err, result){
-        if (result.result.ok) {
-          res.redirect('/?active='+result.insertedIds)
+      db.collection('movies').insert({title: title, year: year, imdb: imdb}, function(err, data){
+        if (data.result.ok) {
+          res.redirect('/?active='+data.insertedIds)
         } else {
           res.send('error on added document')
         }
